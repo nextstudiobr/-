@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Serviços | Next Studio</title>
+<meta name="description" content="Sites institucionais, landing pages, catálogos digitais e experiências digitais. Veja como o projeto anda, do primeiro contato até o site no ar.">
+<meta name="author" content="Next Studio">
+<meta name="theme-color" content="#16130F">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://netxstudiobr.github.io/-/servicos.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Next Studio">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://netxstudiobr.github.io/-/servicos.html">
+<meta property="og:title" content="Serviços | Next Studio">
+<meta property="og:description" content="Sites institucionais, landing pages, catálogos digitais e experiências digitais. Veja como o projeto anda, do primeiro contato até o site no ar.">
+<meta property="og:image" content="https://netxstudiobr.github.io/-/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="833">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Serviços | Next Studio">
+<meta name="twitter:description" content="Sites institucionais, landing pages, catálogos digitais e experiências digitais. Veja como o projeto anda, do primeiro contato até o site no ar.">
+<meta name="twitter:image" content="https://netxstudiobr.github.io/-/assets/og.jpg">
+
+<!-- favicon: recorte do ícone oficial da marca -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/logo-lockup.png">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;700;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- o site inteiro usa uma folha só; cada aba é HTML puro -->
+<link rel="stylesheet" href="assets/estilo.css">
+
+<script>document.documentElement.className=document.documentElement.className.replace('no-js','js');</script>
+
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ambiente 3D generativo (shader próprio) -->
+<canvas id="amb" aria-hidden="true"></canvas>
+<div class="vinheta" aria-hidden="true"></div>
+<div class="grao" aria-hidden="true"></div>
+
+<!-- abertura -->
+<div class="carga" id="carga" aria-hidden="true">
+  <img class="carga__lock" src="assets/logo-lockup.png" alt="" width="948" height="130">
+  <div class="carga__barra"><i id="cargaFio"></i></div>
+  <span class="carga__n" id="cargaN">000</span>
+</div>
+
+<!-- trilhos: a espinha que percorre a aba inteira -->
+<div class="trilho trilho--e" aria-hidden="true">
+  <span class="trilho__cap" id="capitulo"><b>02</b> / SERVIÇOS</span>
+  <div class="espinha">
+    <span class="espinha__fill" id="espFill"></span>
+    <img class="espinha__mark" id="espMark" src="assets/logo-mark.png" alt="" width="101" height="124">
+  </div>
+</div>
+<div class="trilho trilho--d" aria-hidden="true">
+  <span class="trilho__txt">Next Studio · Guarulhos · SP</span>
+</div>
+
+<!-- navegação -->
+<header class="navbar" id="navbar">
+  <div class="navbar__in">
+    <a class="marca" href="index.html" aria-label="Next Studio, início">
+      <img src="assets/logo-lockup.png" alt="Next Studio" width="948" height="130">
+    </a>
+    <nav class="navlinks" id="navlinks" aria-label="Navegação principal">
+      <a href="projetos.html">Projetos</a>
+      <a href="servicos.html" aria-current="page">Serviços</a>
+      <a href="precos.html">Preços</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+    <a class="nav__ig" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
+      <span>WhatsApp</span><span aria-hidden="true">→</span>
+    </a>
+    <button class="burg" id="burg" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <i></i><i></i>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="menu__lista" aria-label="Navegação">
+    <a href="index.html" style="--d:.06s">Início</a>
+    <a href="projetos.html" style="--d:.12s">Projetos</a>
+    <a href="servicos.html" aria-current="page" style="--d:.18s">Serviços</a>
+    <a href="precos.html" style="--d:.24s">Preços</a>
+    <a href="sobre.html" style="--d:.30s">Sobre</a>
+    <a href="contato.html" style="--d:.36s">Contato<em>.</em></a>
+  </nav>
+  <div class="menu__pe">
+    <span class="mono">Guarulhos · SP<br>Brasil</span>
+    <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704 →</a>
+  </div>
+</div>
+
+<main id="conteudo">
+
+<!-- ═══ TOPO DA ABA ═══ -->
+<section class="hero hero--interna" id="topo" aria-labelledby="heroTit" data-cap="02 / Serviços" data-clima=".28">
+  <div class="hero__filme" id="heroFilme" aria-hidden="true">
+    <video id="heroVideo" src="assets/hero-bg.mp4" width="1280" height="720"
+           autoplay muted loop playsinline preload="metadata"
+           disablepictureinpicture disableremoteplayback tabindex="-1"></video>
+    <span class="hero__veu"></span>
+  </div>
+  <img class="hero__eco" id="heroEco" src="assets/logo-outline.png" alt="" aria-hidden="true" width="130" height="157">
+  <div class="wrap">
+    <div class="hero__topo hero__topo--entre">
+      <span class="mono">[ 02 ] &nbsp;Quatro frentes</span>
+      <span class="mono hero__onde">Next Studio &nbsp;·&nbsp; <b>Serviços</b></span>
+    </div>
+
+    <h1 class="hero__h1" id="heroTit">
+      <span class="ln"><i>Serviços<em>.</em></i></span>
+    </h1>
+
+    <div class="hero__base">
+      <p class="hero__p rv" style="--d:.5s">Do site de uma página ao catálogo com aba de compras. <b>Sempre feito do zero</b>, para o seu negócio.</p>
+      <div class="hero__ctas rv" style="--d:.62s">
+        <a class="bt bt--forte" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer"><span>Falar no WhatsApp</span><i>→</i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVIÇOS / varredura horizontal ═══ -->
+<section class="serv" id="servicos" data-serv aria-labelledby="servTit" data-cap="02 / Serviços" data-clima=".28">
+  <div class="serv__pin">
+    <div class="serv__cab">
+      <h2 class="cab__tit linhas" id="servTit"><span class="ln"><i>Quatro frentes<em>.</em></i></span></h2>
+      <span class="mono">[ 02 ] &nbsp;Arraste para o lado</span>
+    </div>
+
+    <div class="serv__track" id="servTrack">
+      <article class="serv__it">
+        <span class="serv__n">01</span>
+        <div class="serv__corpo">
+          <h3>Sites <br>institucionais</h3>
+          <p>Presença digital profissional.</p>
+        </div>
+        <span class="serv__marca" aria-hidden="true">01</span>
+      </article>
+      <article class="serv__it">
+        <span class="serv__n">02</span>
+        <div class="serv__corpo">
+          <h3>Landing <br>pages</h3>
+          <p>Páginas focadas em conversão.</p>
+        </div>
+        <span class="serv__marca" aria-hidden="true">02</span>
+      </article>
+      <article class="serv__it">
+        <span class="serv__n">03</span>
+        <div class="serv__corpo">
+          <h3>Catálogos <br>digitais</h3>
+          <p>Produtos e serviços organizados.</p>
+        </div>
+        <span class="serv__marca" aria-hidden="true">03</span>
+      </article>
+      <article class="serv__it">
+        <span class="serv__n">04</span>
+        <div class="serv__corpo">
+          <h3>Experiências <br>digitais</h3>
+          <p>Sites personalizados com direção visual e interação.</p>
+        </div>
+        <span class="serv__marca" aria-hidden="true">04</span>
+      </article>
+    </div>
+
+    <div class="serv__barra" aria-hidden="true">
+      <span class="mono" id="servN">01 / 04</span>
+      <span class="fio"><i id="servFio"></i></span>
+      <span class="mono">Arraste</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESSO ═══ -->
+<section class="sec" id="processo" aria-labelledby="procTit" data-cap="·· / Processo" data-clima=".24">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="cab__tit linhas" id="procTit"><span class="ln"><i>Processo<em>.</em></i></span></h2>
+      <span class="mono">[ ·· ] &nbsp;Três passos</span>
+    </div>
+    <div class="proc__lista" id="procLista">
+      <div class="proc__fio" aria-hidden="true"><i id="procFio"></i></div>
+      <div class="proc__it rv" data-passo>
+        <span class="proc__n" aria-hidden="true">01</span>
+        <div>
+          <h3>Conversa</h3>
+          <p>Entendemos o negócio e o que você precisa.</p>
+        </div>
+      </div>
+      <div class="proc__it rv" data-passo style="--d:.08s">
+        <span class="proc__n" aria-hidden="true">02</span>
+        <div>
+          <h3>Proposta</h3>
+          <p>Definimos estrutura, visual e investimento.</p>
+        </div>
+      </div>
+      <div class="proc__it rv" data-passo style="--d:.16s">
+        <span class="proc__n" aria-hidden="true">03</span>
+        <div>
+          <h3>No ar</h3>
+          <p>Desenvolvemos e colocamos o site para funcionar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRÓXIMA ABA ═══ -->
+<a class="prox" href="precos.html" aria-label="Próxima aba: Preços">
+  <div class="wrap">
+    <div class="prox__in">
+      <span>
+        <span class="mono">Próxima aba</span>
+        <span class="prox__t">Preços<em>.</em></span>
+      </span>
+      <i class="prox__i" aria-hidden="true">→</i>
+    </div>
+  </div>
+</a>
+
+<!-- ═══ CTA FINAL ═══ -->
+<section class="fim" id="fim" data-fim aria-labelledby="fimTit" data-cap="05 / Contato" data-clima=".85">
+  <div class="fim__cam fim__cam--base">
+    <div class="wrap">
+      <div class="fim__topo">
+        <span class="mono">[ 05 ] &nbsp;Último passo</span>
+        <span class="mono">(11) 99867-7704</span>
+      </div>
+      <h2 class="fim__h linhas" id="fimTit">
+        <span class="ln"><i>Seu próximo</i></span>
+        <span class="ln"><i>site começa</i></span>
+        <span class="ln"><i>aqui<em>.</em></i></span>
+      </h2>
+      <p class="fim__p">Se você quer um site que tenha a cara do seu negócio, vamos conversar.</p>
+      <div>
+        <a class="bt bt--forte" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer"><span>Falar no WhatsApp</span><i>→</i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="fim__cam fim__cam--on" id="fimOn" aria-hidden="true">
+    <div class="wrap">
+      <div class="fim__topo">
+        <span class="mono">[ 05 ] &nbsp;Último passo</span>
+        <span class="mono">(11) 99867-7704</span>
+      </div>
+      <h2 class="fim__h revelado">
+        <span class="ln"><i>Seu próximo</i></span>
+        <span class="ln"><i>site começa</i></span>
+        <span class="ln"><i>aqui.</i></span>
+      </h2>
+      <p class="fim__p">Se você quer um site que tenha a cara do seu negócio, vamos conversar.</p>
+      <div><span class="bt"><span>Falar no WhatsApp</span><i>→</i></span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape__topo">
+      <a class="rodape__lock" href="index.html">
+        <img src="assets/logo-tagline.png" alt="Next Studio, criação de sites, Guarulhos · SP" width="837" height="170">
+      </a>
+      <nav class="rodape__nav" aria-label="Navegação do rodapé">
+        <a href="index.html">Início</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="servicos.html" aria-current="page">Serviços</a>
+        <a href="precos.html">Preços</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">WhatsApp →</a>
+      </nav>
+    </div>
+    <div class="rodape__base">
+      <span class="mono">© 2026 Next Studio</span>
+      <span class="mono">Feito à mão, sem template</span>
+      <a class="mono subir" href="#topo">Voltar ao topo ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js" defer></script>
+
+</body>
+</html>
