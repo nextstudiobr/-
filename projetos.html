@@ -5,257 +5,238 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>Projetos | Next Studio</title>
-<meta name="description" content="Sites feitos pela Next Studio: Daniele Beauty, Córtex Mind e Gelada Pocket. Projetos escritos do zero, sem template.">
+<meta name="description" content="Três sites no ar, escritos do zero pela Next Studio: Daniele Beauty, clínica de estética no Tatuapé; Córtex Mind, atendimento com IA; e Gelada Pocket, adega com cardápio digital.">
 <meta name="author" content="Next Studio">
-<meta name="theme-color" content="#16130F">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://netxstudiobr.github.io/-/projetos.html">
+<meta name="theme-color" content="#0B0908">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://netxstudiobr.github.io/-/projetos">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Next Studio">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:url" content="https://netxstudiobr.github.io/-/projetos.html">
+<meta property="og:url" content="https://netxstudiobr.github.io/-/projetos">
 <meta property="og:title" content="Projetos | Next Studio">
-<meta property="og:description" content="Sites feitos pela Next Studio: Daniele Beauty, Córtex Mind e Gelada Pocket. Projetos escritos do zero, sem template.">
-<meta property="og:image" content="https://netxstudiobr.github.io/-/assets/og.jpg">
+<meta property="og:description" content="Três sites no ar, escritos do zero: Daniele Beauty, Córtex Mind e Gelada Pocket.">
+<meta property="og:image" content="https://netxstudiobr.github.io/-/assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="833">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Composição da Next Studio: o título “Sites feitos à mão” em letras claras à esquerda e um notebook exibindo a marca na tela.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Projetos | Next Studio">
-<meta name="twitter:description" content="Sites feitos pela Next Studio: Daniele Beauty, Córtex Mind e Gelada Pocket. Projetos escritos do zero, sem template.">
-<meta name="twitter:image" content="https://netxstudiobr.github.io/-/assets/og.jpg">
+<meta name="twitter:description" content="Três sites no ar, escritos do zero: Daniele Beauty, Córtex Mind e Gelada Pocket.">
+<meta name="twitter:image" content="https://netxstudiobr.github.io/-/assets/img/og.jpg">
 
-<!-- favicon: recorte do ícone oficial da marca -->
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/logo-lockup.png">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;700;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/estilo.css">
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js");</script>
 
-<!-- o site inteiro usa uma folha só; cada aba é HTML puro -->
-<link rel="stylesheet" href="assets/estilo.css">
-
-<script>document.documentElement.className=document.documentElement.className.replace('no-js','js');</script>
-
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://netxstudiobr.github.io/-/"},
+    {"@type":"ListItem","position":2,"name":"Projetos","item":"https://netxstudiobr.github.io/-/projetos"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"CollectionPage",
+  "name":"Projetos da Next Studio",
+  "url":"https://netxstudiobr.github.io/-/projetos",
+  "hasPart":[
+    {"@type":"CreativeWork","name":"Daniele Beauty","url":"https://danielebeauty.com.br","about":"Clínica de estética no Tatuapé"},
+    {"@type":"CreativeWork","name":"Córtex Mind","url":"https://cortexmind.com.br","about":"Atendimento com IA"},
+    {"@type":"CreativeWork","name":"Gelada Pocket","url":"https://netxstudiobr.github.io/geladapocket/","about":"Adega e cozinha no Tatuapé"}
+  ]
+}
+</script>
 </head>
 <body>
 
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
-
-<!-- ambiente 3D generativo (shader próprio) -->
-<canvas id="amb" aria-hidden="true"></canvas>
-<div class="vinheta" aria-hidden="true"></div>
 <div class="grao" aria-hidden="true"></div>
+<div class="fio-pg" aria-hidden="true"><i id="fioPg"></i></div>
 
-<!-- abertura -->
-<div class="carga" id="carga" aria-hidden="true">
-  <img class="carga__lock" src="assets/logo-lockup.png" alt="" width="948" height="130">
-  <div class="carga__barra"><i id="cargaFio"></i></div>
-  <span class="carga__n" id="cargaN">000</span>
-</div>
-
-<!-- trilhos: a espinha que percorre a aba inteira -->
-<div class="trilho trilho--e" aria-hidden="true">
-  <span class="trilho__cap" id="capitulo"><b>01</b> / PROJETOS</span>
-  <div class="espinha">
-    <span class="espinha__fill" id="espFill"></span>
-    <img class="espinha__mark" id="espMark" src="assets/logo-mark.png" alt="" width="101" height="124">
-  </div>
-</div>
-<div class="trilho trilho--d" aria-hidden="true">
-  <span class="trilho__txt">Next Studio · Guarulhos · SP</span>
-</div>
-
-<!-- navegação -->
-<header class="navbar" id="navbar">
-  <div class="navbar__in">
-    <a class="marca" href="index.html" aria-label="Next Studio, início">
-      <img src="assets/logo-lockup.png" alt="Next Studio" width="948" height="130">
+<header class="topo" id="topo">
+  <div class="topo__in">
+    <a class="marca" href="./" aria-label="Next Studio, início">
+      <img src="assets/img/logo-lockup.png" alt="Next Studio" width="948" height="130">
     </a>
-    <nav class="navlinks" id="navlinks" aria-label="Navegação principal">
-      <a href="projetos.html" aria-current="page">Projetos</a>
-      <a href="servicos.html">Serviços</a>
-      <a href="precos.html">Preços</a>
-      <a href="sobre.html">Sobre</a>
-      <a href="contato.html">Contato</a>
+    <nav class="topo__nav" aria-label="Navegação principal">
+      <a href="projetos" aria-current="page">Projetos</a>
+      <a href="servicos">Serviços</a>
+      <a href="precos">Preços</a>
+      <a href="sobre">Sobre</a>
+      <a href="contato">Contato</a>
     </nav>
-    <a class="nav__ig" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
-      <span>WhatsApp</span><span aria-hidden="true">→</span>
-    </a>
-    <button class="burg" id="burg" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
-      <i></i><i></i>
+    <span class="bt-caixa topo__zap">
+      <a class="bt bt--solido" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
+        WhatsApp
+      </a>
+    </span>
+    <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <i aria-hidden="true"></i><i aria-hidden="true"></i>
     </button>
   </div>
 </header>
 
 <div class="menu" id="menu" hidden>
   <nav class="menu__lista" aria-label="Navegação">
-    <a href="index.html" style="--d:.06s">Início</a>
-    <a href="projetos.html" aria-current="page" style="--d:.12s">Projetos</a>
-    <a href="servicos.html" style="--d:.18s">Serviços</a>
-    <a href="precos.html" style="--d:.24s">Preços</a>
-    <a href="sobre.html" style="--d:.30s">Sobre</a>
-    <a href="contato.html" style="--d:.36s">Contato<em>.</em></a>
+    <a href="./" style="--atraso:.05s"><em>01</em>Início</a>
+    <a href="projetos" aria-current="page" style="--atraso:.10s"><em>02</em>Projetos</a>
+    <a href="servicos" style="--atraso:.15s"><em>03</em>Serviços</a>
+    <a href="precos" style="--atraso:.20s"><em>04</em>Preços</a>
+    <a href="sobre" style="--atraso:.25s"><em>05</em>Sobre</a>
+    <a href="contato" style="--atraso:.30s"><em>06</em>Contato</a>
   </nav>
   <div class="menu__pe">
-    <span class="mono">Guarulhos · SP<br>Brasil</span>
-    <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704 →</a>
+    <span class="rot">Guarulhos · SP<br>Atendimento para todo o Brasil</span>
+    <a class="lk" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704</a>
   </div>
 </div>
 
 <main id="conteudo">
 
-<!-- ═══ TOPO DA ABA ═══ -->
-<section class="hero hero--interna" id="topo" aria-labelledby="heroTit" data-cap="01 / Projetos" data-clima=".16">
-  <div class="hero__filme" id="heroFilme" aria-hidden="true">
-    <video id="heroVideo" src="assets/hero-bg.mp4" width="1280" height="720"
-           autoplay muted loop playsinline preload="metadata"
-           disablepictureinpicture disableremoteplayback tabindex="-1"></video>
-    <span class="hero__veu"></span>
-  </div>
-  <img class="hero__eco" id="heroEco" src="assets/logo-outline.png" alt="" aria-hidden="true" width="130" height="157">
-  <div class="wrap">
-    <div class="hero__topo hero__topo--entre">
-      <span class="mono">[ 01 ] &nbsp;Selecionados &nbsp;· &nbsp;2025 / 2026</span>
-      <span class="mono hero__onde">Next Studio &nbsp;·&nbsp; <b>Projetos</b></span>
-    </div>
-
-    <h1 class="hero__h1" id="heroTit">
-      <span class="ln"><i>Projetos<em>.</em></i></span>
+<section class="frontal" aria-labelledby="tit">
+  <canvas class="frontal__tela" data-malha="grade" aria-hidden="true"></canvas>
+  <div class="berco frontal__in">
+    <nav class="migalhas rot" aria-label="Você está aqui">
+      <ol>
+        <li><a href="./">Início</a></li>
+        <li><span aria-current="page">Projetos</span></li>
+      </ol>
+    </nav>
+    <h1 class="frontal__h1" id="tit">
+      <span class="tr">Projetos<span class="caret" aria-hidden="true">&rsaquo;</span></span>
     </h1>
-
-    <div class="hero__base">
-      <p class="hero__p rv" style="--d:.5s">Três sites no ar, cada um com a cara do seu negócio. <b>Todos escritos do zero</b>, sem template.</p>
-      <div class="hero__ctas rv" style="--d:.62s">
-        <a class="bt bt--forte" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer"><span>Falar no WhatsApp</span><i>→</i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CASOS ═══ -->
-<section class="casos" id="projetos" aria-label="Projetos selecionados">
-  <article class="caso" data-caso>
-    <span class="caso__fant" aria-hidden="true" data-par="0.14">01</span>
-    <div class="wrap">
-      <div class="caso__grid">
-        <div class="caso__txt">
-          <span class="caso__idx">Projeto 01</span>
-          <h2 class="caso__nome rv">Daniele Beauty</h2>
-          <span class="caso__cat rv" style="--d:.08s">Beauty / Institucional</span>
-          <a class="lk lk--laranja rv" style="--d:.16s" href="https://danielebeauty.com.br" target="_blank" rel="noopener noreferrer">Ver projeto <i>→</i></a>
-        </div>
-        <a class="caso__media" href="https://danielebeauty.com.br" target="_blank" rel="noopener noreferrer" aria-label="Abrir o site Daniele Beauty em nova aba">
-          <span class="caso__quadro">
-            <img src="assets/daniele-beauty.jpg" alt="Página inicial do site da Daniele Beauty Clinic, com fundo amadeirado e o título “A sua pele merece um cuidado só dela”." width="1200" height="833" loading="lazy" decoding="async" data-par-img>
-            <span class="caso__veu"></span>
-          </span>
-          <span class="caso__pe">
-            <span class="caso__url">danielebeauty.com.br</span>
-            <span class="mono">Clínica de estética · Tatuapé</span>
-          </span>
+    <p class="frontal__p rv" style="--atraso:.26s">Três sites no ar, cada um com a cara do seu negócio. <b>Todos escritos do zero</b>, sem template.</p>
+    <div class="frontal__acoes rv" style="--atraso:.36s">
+      <span class="bt-caixa">
+        <a class="bt bt--solido" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
+          Quero um assim
         </a>
-      </div>
-    </div>
-  </article>
-
-  <article class="caso caso--inv" data-caso>
-    <span class="caso__fant" aria-hidden="true" data-par="0.14">02</span>
-    <div class="wrap">
-      <div class="caso__grid">
-        <div class="caso__txt">
-          <span class="caso__idx">Projeto 02</span>
-          <h2 class="caso__nome rv">Córtex Mind</h2>
-          <span class="caso__cat rv" style="--d:.08s">Tecnologia / Aquisição</span>
-          <a class="lk lk--laranja rv" style="--d:.16s" href="https://cortexmind.com.br" target="_blank" rel="noopener noreferrer">Ver projeto <i>→</i></a>
-        </div>
-        <a class="caso__media" href="https://cortexmind.com.br" target="_blank" rel="noopener noreferrer" aria-label="Abrir o site Córtex Mind em nova aba">
-          <span class="caso__quadro">
-            <img src="assets/cortex-mind.jpg" alt="Página inicial do site da Córtex, em azul-marinho, com o título “Cuidamos do seu cliente do anúncio à venda fechada”." width="1200" height="833" loading="lazy" decoding="async" data-par-img>
-            <span class="caso__veu"></span>
-          </span>
-          <span class="caso__pe">
-            <span class="caso__url">cortexmind.com.br</span>
-            <span class="mono">Atendimento com IA</span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </article>
-
-  <article class="caso" data-caso>
-    <span class="caso__fant" aria-hidden="true" data-par="0.14">03</span>
-    <div class="wrap">
-      <div class="caso__grid">
-        <div class="caso__txt">
-          <span class="caso__idx">Projeto 03</span>
-          <h2 class="caso__nome rv">Gelada Pocket</h2>
-          <span class="caso__cat rv" style="--d:.08s">Adega / Cardápio digital</span>
-          <a class="lk lk--laranja rv" style="--d:.16s" href="https://netxstudiobr.github.io/geladapocket/" target="_blank" rel="noopener noreferrer">Ver projeto <i>→</i></a>
-        </div>
-        <a class="caso__media" href="https://netxstudiobr.github.io/geladapocket/" target="_blank" rel="noopener noreferrer" aria-label="Abrir o site Gelada Pocket Club em nova aba">
-          <span class="caso__quadro">
-            <img src="assets/gelada-pocket.jpg" alt="Página inicial do site do Gelada Pocket Club, com o título “Uma adega que virou cozinha” e a foto de um drink." width="1200" height="833" loading="lazy" decoding="async" data-par-img>
-            <span class="caso__veu"></span>
-          </span>
-          <span class="caso__pe">
-            <span class="caso__url">geladapocket</span>
-            <span class="mono">Adega e cozinha · Tatuapé</span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </article>
-</section>
-
-<!-- ═══ PRÓXIMA ABA ═══ -->
-<a class="prox" href="servicos.html" aria-label="Próxima aba: Serviços">
-  <div class="wrap">
-    <div class="prox__in">
-      <span>
-        <span class="mono">Próxima aba</span>
-        <span class="prox__t">Serviços<em>.</em></span>
       </span>
-      <i class="prox__i" aria-hidden="true">→</i>
+      <span class="bt-caixa">
+        <a class="bt" href="precos">
+          Ver os preços
+        </a>
+      </span>
     </div>
   </div>
-</a>
+</section>
 
-<!-- ═══ CTA FINAL ═══ -->
-<section class="fim" id="fim" data-fim aria-labelledby="fimTit" data-cap="05 / Contato" data-clima=".85">
-  <div class="fim__cam fim__cam--base">
-    <div class="wrap">
-      <div class="fim__topo">
-        <span class="mono">[ 05 ] &nbsp;Último passo</span>
-        <span class="mono">(11) 99867-7704</span>
-      </div>
-      <h2 class="fim__h linhas" id="fimTit">
-        <span class="ln"><i>Seu próximo</i></span>
-        <span class="ln"><i>site começa</i></span>
-        <span class="ln"><i>aqui<em>.</em></i></span>
-      </h2>
-      <p class="fim__p">Se você quer um site que tenha a cara do seu negócio, vamos conversar.</p>
-      <div>
-        <a class="bt bt--forte" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer"><span>Falar no WhatsApp</span><i>→</i></a>
-      </div>
+<section class="sec obra" id="lista" aria-label="Projetos selecionados">
+  <div class="berco">
+    <div class="regua" aria-hidden="true"></div>
+    <div class="cabeca">
+      <h2 class="cabeca__t" data-tracar><span class="tr">No ar</span></h2>
+      <p class="cabeca__d"><span class="coord"><b>01</b><i>/06</i></span> &nbsp; Selecionados entre 2025 e 2026.</p>
+    </div>
+    <div class="obra__lista">
+      <article class="janela">
+        <div class="janela__grade">
+          <div class="janela__ficha rv">
+            <h2 class="janela__nome">Daniele Beauty</h2>
+            <span class="janela__cat">Beauty / Institucional</span>
+            <p class="janela__nota">Clínica de estética facial avançada no Tatuapé, em São Paulo.</p>
+            <a class="lk" href="https://danielebeauty.com.br" target="_blank" rel="noopener noreferrer">Abrir o site</a>
+          </div>
+          <a class="janela__quadro" href="https://danielebeauty.com.br" target="_blank" rel="noopener noreferrer" aria-label="danielebeauty.com.br — abrir o site Daniele Beauty em uma nova aba">
+            <span class="janela__barra">
+              <span class="janela__bolas" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="janela__url">danielebeauty<b>.com.br</b></span>
+              <span class="janela__ir" aria-hidden="true">Abrir &rsaquo;</span>
+            </span>
+            <span class="janela__tela">
+              <picture>
+                <source type="image/webp" srcset="assets/img/daniele-beauty.webp" sizes="(max-width:980px) 92vw, 62vw">
+                <img src="assets/img/daniele-beauty.jpg" width="1200" height="833" loading="lazy" decoding="async" alt="Página inicial do site da Daniele Beauty Clinic, com fundo amadeirado e o título “A sua pele merece um cuidado só dela”.">
+              </picture>
+            </span>
+          </a>
+        </div>
+      </article>
+
+      <article class="janela">
+        <div class="janela__grade">
+          <div class="janela__ficha rv">
+            <h2 class="janela__nome">Córtex Mind</h2>
+            <span class="janela__cat">Tecnologia / Aquisição</span>
+            <p class="janela__nota">Atendimento com IA, do anúncio à venda fechada.</p>
+            <a class="lk" href="https://cortexmind.com.br" target="_blank" rel="noopener noreferrer">Abrir o site</a>
+          </div>
+          <a class="janela__quadro" href="https://cortexmind.com.br" target="_blank" rel="noopener noreferrer" aria-label="cortexmind.com.br — abrir o site Córtex Mind em uma nova aba">
+            <span class="janela__barra">
+              <span class="janela__bolas" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="janela__url">cortexmind<b>.com.br</b></span>
+              <span class="janela__ir" aria-hidden="true">Abrir &rsaquo;</span>
+            </span>
+            <span class="janela__tela">
+              <picture>
+                <source type="image/webp" srcset="assets/img/cortex-mind.webp" sizes="(max-width:980px) 92vw, 62vw">
+                <img src="assets/img/cortex-mind.jpg" width="1200" height="833" loading="lazy" decoding="async" alt="Página inicial do site da Córtex, em azul-marinho, com o título “Cuidamos do seu cliente do anúncio à venda fechada”.">
+              </picture>
+            </span>
+          </a>
+        </div>
+      </article>
+
+      <article class="janela">
+        <div class="janela__grade">
+          <div class="janela__ficha rv">
+            <h2 class="janela__nome">Gelada Pocket</h2>
+            <span class="janela__cat">Adega / Cardápio digital</span>
+            <p class="janela__nota">Adega e cozinha no Tatuapé, com cardápio digital.</p>
+            <a class="lk" href="https://netxstudiobr.github.io/geladapocket/" target="_blank" rel="noopener noreferrer">Abrir o site</a>
+          </div>
+          <a class="janela__quadro" href="https://netxstudiobr.github.io/geladapocket/" target="_blank" rel="noopener noreferrer" aria-label="netxstudiobr.github.io/geladapocket — abrir o site Gelada Pocket em uma nova aba">
+            <span class="janela__barra">
+              <span class="janela__bolas" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="janela__url">netxstudiobr.github.io<b>/geladapocket</b></span>
+              <span class="janela__ir" aria-hidden="true">Abrir &rsaquo;</span>
+            </span>
+            <span class="janela__tela">
+              <picture>
+                <source type="image/webp" srcset="assets/img/gelada-pocket.webp" sizes="(max-width:980px) 92vw, 62vw">
+                <img src="assets/img/gelada-pocket.jpg" width="1200" height="833" loading="lazy" decoding="async" alt="Página inicial do site do Gelada Pocket Club, com o título “Uma adega que virou cozinha” e a foto de um drink.">
+              </picture>
+            </span>
+          </a>
+        </div>
+      </article>
+    </div>
+    <div class="planos__nota">
+      <p class="rot">Quer o seu no meio deles?</p>
+      <a class="lk" href="contato">Começar um projeto</a>
     </div>
   </div>
+</section>
 
-  <div class="fim__cam fim__cam--on" id="fimOn" aria-hidden="true">
-    <div class="wrap">
-      <div class="fim__topo">
-        <span class="mono">[ 05 ] &nbsp;Último passo</span>
-        <span class="mono">(11) 99867-7704</span>
-      </div>
-      <h2 class="fim__h revelado">
-        <span class="ln"><i>Seu próximo</i></span>
-        <span class="ln"><i>site começa</i></span>
-        <span class="ln"><i>aqui.</i></span>
-      </h2>
-      <p class="fim__p">Se você quer um site que tenha a cara do seu negócio, vamos conversar.</p>
-      <div><span class="bt"><span>Falar no WhatsApp</span><i>→</i></span></div>
+<section class="seguir" aria-label="Continuar navegando">
+  <div class="berco" style="padding-block:clamp(40px,5vw,72px)">
+    <div class="regua" aria-hidden="true"></div>
+    <div class="seguir__grade">
+      <a class="seguir__cart" href="servicos">
+        <b>Ver os serviços</b>
+        <span>Quatro frentes e o processo de ponta a ponta.</span>
+        <span class="lk">Ir</span>
+      </a>
+      <a class="seguir__cart" href="precos">
+        <b>Conferir os planos</b>
+        <span>Start, Pro e Premium, com valor aberto.</span>
+        <span class="lk">Ir</span>
+      </a>
+      <a class="seguir__cart" href="contato">
+        <b>Começar um projeto</b>
+        <span>WhatsApp, telefone e formulário.</span>
+        <span class="lk">Ir</span>
+      </a>
     </div>
   </div>
 </section>
@@ -263,30 +244,54 @@
 </main>
 
 <footer class="rodape">
-  <div class="wrap">
-    <div class="rodape__topo">
-      <a class="rodape__lock" href="index.html">
-        <img src="assets/logo-tagline.png" alt="Next Studio, criação de sites, Guarulhos · SP" width="837" height="170">
-      </a>
-      <nav class="rodape__nav" aria-label="Navegação do rodapé">
-        <a href="index.html">Início</a>
-        <a href="projetos.html" aria-current="page">Projetos</a>
-        <a href="servicos.html">Serviços</a>
-        <a href="precos.html">Preços</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="contato.html">Contato</a>
-        <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">WhatsApp →</a>
+  <div class="berco">
+    <div class="regua" aria-hidden="true"></div>
+    <div class="rodape__grade">
+      <div class="rodape__assina">
+        <a class="rodape__marca" href="./" aria-label="Next Studio, início">
+          <img src="assets/img/logo-tagline.png" alt="Next Studio — criação de sites, Guarulhos · SP" width="837" height="170" loading="lazy">
+        </a>
+        <p class="rodape__frase">Sites escritos do zero, linha por linha. Estúdio em Guarulhos · SP, atendendo todo o Brasil.</p>
+        <a class="rodape__fone" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704</a>
+        <span class="rot">Ligações de segunda a sábado, 9h às 20h</span>
+      </div>
+      <nav class="rodape__col" aria-label="Páginas do site">
+        <h2>O site</h2>
+        <a href="projetos">Projetos</a>
+        <a href="servicos">Serviços</a>
+        <a href="precos">Preços</a>
+        <a href="sobre">Sobre</a>
+        <a href="contato">Contato</a>
       </nav>
+      <div class="rodape__col">
+        <h2>Contato</h2>
+        <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="tel:+5511998677704">Telefone</a>
+        <a href="https://instagram.com/nextstudio.site" target="_blank" rel="noopener noreferrer">@nextstudio.site</a>
+        <a href="contato">Formulário</a>
+      </div>
+      <div class="rodape__col">
+        <h2>Estúdio</h2>
+        <span>Guarulhos · SP</span>
+        <span>Todo o Brasil</span>
+        <a href="sobre">Quem faz</a>
+        <a href="privacidade">Privacidade</a>
+      </div>
     </div>
-    <div class="rodape__base">
-      <span class="mono">© 2026 Next Studio</span>
-      <span class="mono">Feito à mão, sem template</span>
-      <a class="mono subir" href="#topo">Voltar ao topo ↑</a>
+    <div class="rodape__fim" data-tracar aria-hidden="true">
+      <span class="rodape__gigante tr">Sites feitos à mão<span class="caret">&rsaquo;</span></span>
+    </div>
+    <div class="rodape__baixo">
+      <span class="rot">&copy; <span data-ano>2026</span> Next Studio</span>
+      <span class="rot">Feito à mão, sem template</span>
+      <a class="rot subir" href="#conteudo">Voltar ao topo <i aria-hidden="true">&#8593;</i></a>
     </div>
   </div>
 </footer>
 
-<script src="assets/site.js" defer></script>
+
+<script src="assets/js/nucleo.js" defer></script>
+<script src="assets/js/malha.js" defer></script>
 
 </body>
 </html>

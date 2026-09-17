@@ -5,215 +5,253 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>Contato | Next Studio</title>
-<meta name="description" content="Fale com a Next Studio pelo WhatsApp (11) 99867-7704, por telefone ou pelo Instagram. Resposta no mesmo dia.">
+<meta name="description" content="Fale com a Next Studio pelo WhatsApp (11) 99867-7704, por telefone ou pelo formulário. Estúdio de criação de sites em Guarulhos · SP, com resposta no mesmo dia.">
 <meta name="author" content="Next Studio">
-<meta name="theme-color" content="#16130F">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://netxstudiobr.github.io/-/contato.html">
+<meta name="theme-color" content="#0B0908">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://netxstudiobr.github.io/-/contato">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Next Studio">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:url" content="https://netxstudiobr.github.io/-/contato.html">
+<meta property="og:url" content="https://netxstudiobr.github.io/-/contato">
 <meta property="og:title" content="Contato | Next Studio">
-<meta property="og:description" content="Fale com a Next Studio pelo WhatsApp (11) 99867-7704, por telefone ou pelo Instagram. Resposta no mesmo dia.">
-<meta property="og:image" content="https://netxstudiobr.github.io/-/assets/og.jpg">
+<meta property="og:description" content="WhatsApp, telefone, Instagram e formulário. Resposta no mesmo dia.">
+<meta property="og:image" content="https://netxstudiobr.github.io/-/assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="833">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Composição da Next Studio: o título “Sites feitos à mão” em letras claras à esquerda e um notebook exibindo a marca na tela.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contato | Next Studio">
-<meta name="twitter:description" content="Fale com a Next Studio pelo WhatsApp (11) 99867-7704, por telefone ou pelo Instagram. Resposta no mesmo dia.">
-<meta name="twitter:image" content="https://netxstudiobr.github.io/-/assets/og.jpg">
+<meta name="twitter:description" content="WhatsApp, telefone, Instagram e formulário. Resposta no mesmo dia.">
+<meta name="twitter:image" content="https://netxstudiobr.github.io/-/assets/img/og.jpg">
 
-<!-- favicon: recorte do ícone oficial da marca -->
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/logo-lockup.png">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;700;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/estilo.css">
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js");</script>
 
-<!-- o site inteiro usa uma folha só; cada aba é HTML puro -->
-<link rel="stylesheet" href="assets/estilo.css">
-
-<script>document.documentElement.className=document.documentElement.className.replace('no-js','js');</script>
-
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://netxstudiobr.github.io/-/"},
+    {"@type":"ListItem","position":2,"name":"Contato","item":"https://netxstudiobr.github.io/-/contato"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"ContactPage",
+  "url":"https://netxstudiobr.github.io/-/contato",
+  "mainEntity":{"@type":"Organization","name":"Next Studio","telephone":"+55 11 99867-7704",
+    "contactPoint":{"@type":"ContactPoint","telephone":"+55 11 99867-7704","contactType":"vendas","areaServed":"BR","availableLanguage":"Portuguese"}}
+}
+</script>
 </head>
 <body>
 
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
-
-<!-- ambiente 3D generativo (shader próprio) -->
-<canvas id="amb" aria-hidden="true"></canvas>
-<div class="vinheta" aria-hidden="true"></div>
 <div class="grao" aria-hidden="true"></div>
+<div class="fio-pg" aria-hidden="true"><i id="fioPg"></i></div>
 
-<!-- abertura -->
-<div class="carga" id="carga" aria-hidden="true">
-  <img class="carga__lock" src="assets/logo-lockup.png" alt="" width="948" height="130">
-  <div class="carga__barra"><i id="cargaFio"></i></div>
-  <span class="carga__n" id="cargaN">000</span>
-</div>
-
-<!-- trilhos: a espinha que percorre a aba inteira -->
-<div class="trilho trilho--e" aria-hidden="true">
-  <span class="trilho__cap" id="capitulo"><b>05</b> / CONTATO</span>
-  <div class="espinha">
-    <span class="espinha__fill" id="espFill"></span>
-    <img class="espinha__mark" id="espMark" src="assets/logo-mark.png" alt="" width="101" height="124">
-  </div>
-</div>
-<div class="trilho trilho--d" aria-hidden="true">
-  <span class="trilho__txt">Next Studio · Guarulhos · SP</span>
-</div>
-
-<!-- navegação -->
-<header class="navbar" id="navbar">
-  <div class="navbar__in">
-    <a class="marca" href="index.html" aria-label="Next Studio, início">
-      <img src="assets/logo-lockup.png" alt="Next Studio" width="948" height="130">
+<header class="topo" id="topo">
+  <div class="topo__in">
+    <a class="marca" href="./" aria-label="Next Studio, início">
+      <img src="assets/img/logo-lockup.png" alt="Next Studio" width="948" height="130">
     </a>
-    <nav class="navlinks" id="navlinks" aria-label="Navegação principal">
-      <a href="projetos.html">Projetos</a>
-      <a href="servicos.html">Serviços</a>
-      <a href="precos.html">Preços</a>
-      <a href="sobre.html">Sobre</a>
-      <a href="contato.html" aria-current="page">Contato</a>
+    <nav class="topo__nav" aria-label="Navegação principal">
+      <a href="projetos">Projetos</a>
+      <a href="servicos">Serviços</a>
+      <a href="precos">Preços</a>
+      <a href="sobre">Sobre</a>
+      <a href="contato" aria-current="page">Contato</a>
     </nav>
-    <a class="nav__ig" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
-      <span>WhatsApp</span><span aria-hidden="true">→</span>
-    </a>
-    <button class="burg" id="burg" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
-      <i></i><i></i>
+    <span class="bt-caixa topo__zap">
+      <a class="bt bt--solido" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
+        WhatsApp
+      </a>
+    </span>
+    <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <i aria-hidden="true"></i><i aria-hidden="true"></i>
     </button>
   </div>
 </header>
 
 <div class="menu" id="menu" hidden>
   <nav class="menu__lista" aria-label="Navegação">
-    <a href="index.html" style="--d:.06s">Início</a>
-    <a href="projetos.html" style="--d:.12s">Projetos</a>
-    <a href="servicos.html" style="--d:.18s">Serviços</a>
-    <a href="precos.html" style="--d:.24s">Preços</a>
-    <a href="sobre.html" style="--d:.30s">Sobre</a>
-    <a href="contato.html" aria-current="page" style="--d:.36s">Contato<em>.</em></a>
+    <a href="./" style="--atraso:.05s"><em>01</em>Início</a>
+    <a href="projetos" style="--atraso:.10s"><em>02</em>Projetos</a>
+    <a href="servicos" style="--atraso:.15s"><em>03</em>Serviços</a>
+    <a href="precos" style="--atraso:.20s"><em>04</em>Preços</a>
+    <a href="sobre" style="--atraso:.25s"><em>05</em>Sobre</a>
+    <a href="contato" aria-current="page" style="--atraso:.30s"><em>06</em>Contato</a>
   </nav>
   <div class="menu__pe">
-    <span class="mono">Guarulhos · SP<br>Brasil</span>
-    <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704 →</a>
+    <span class="rot">Guarulhos · SP<br>Atendimento para todo o Brasil</span>
+    <a class="lk" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704</a>
   </div>
 </div>
 
 <main id="conteudo">
 
-<!-- ═══ TOPO DA ABA ═══ -->
-<section class="hero hero--interna" id="topo" aria-labelledby="heroTit" data-cap="05 / Contato" data-clima=".85">
-  <div class="hero__filme" id="heroFilme" aria-hidden="true">
-    <video id="heroVideo" src="assets/hero-bg.mp4" width="1280" height="720"
-           autoplay muted loop playsinline preload="metadata"
-           disablepictureinpicture disableremoteplayback tabindex="-1"></video>
-    <span class="hero__veu"></span>
-  </div>
-  <img class="hero__eco" id="heroEco" src="assets/logo-outline.png" alt="" aria-hidden="true" width="130" height="157">
-  <div class="wrap">
-    <div class="hero__topo hero__topo--entre">
-      <span class="mono">[ 05 ] &nbsp;Último passo</span>
-      <span class="mono hero__onde">Next Studio &nbsp;·&nbsp; <b>Contato</b></span>
-    </div>
-
-    <h1 class="hero__h1" id="heroTit">
-      <span class="ln"><i>Contato<em>.</em></i></span>
+<section class="frontal" aria-labelledby="tit">
+  <canvas class="frontal__tela" data-malha="grade" aria-hidden="true"></canvas>
+  <div class="berco frontal__in">
+    <nav class="migalhas rot" aria-label="Você está aqui">
+      <ol>
+        <li><a href="./">Início</a></li>
+        <li><span aria-current="page">Contato</span></li>
+      </ol>
+    </nav>
+    <h1 class="frontal__h1" id="tit">
+      <span class="tr">Contato<span class="caret" aria-hidden="true">&rsaquo;</span></span>
     </h1>
-
-    <div class="hero__base">
-      <p class="hero__p rv" style="--d:.5s">Chame no WhatsApp e conte o que você precisa. <b>A resposta vem no mesmo dia</b>.</p>
-      <div class="hero__ctas rv" style="--d:.62s">
-        <a class="bt bt--forte" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer"><span>Falar no WhatsApp</span><i>→</i></a>
-      </div>
+    <p class="frontal__p rv" style="--atraso:.26s">Chame no WhatsApp e conte o que você precisa. <b>A resposta vem no mesmo dia</b>.</p>
+    <div class="frontal__acoes rv" style="--atraso:.36s">
+      <span class="bt-caixa">
+        <a class="bt bt--solido" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
+          Falar no WhatsApp
+        </a>
+      </span>
+      <span class="bt-caixa">
+        <a class="bt" href="precos">
+          Ver os preços
+        </a>
+      </span>
     </div>
   </div>
 </section>
 
-<!-- ═══ CANAIS ═══ -->
-<section class="sec" id="canais" aria-labelledby="canaisTit" data-cap="05 / Contato" data-clima=".6">
-  <div class="wrap">
-    <div class="cab">
-      <h2 class="cab__tit linhas" id="canaisTit"><span class="ln"><i>Onde falar<em>.</em></i></span></h2>
-      <span class="mono">[ 05 ] &nbsp;Três canais</span>
+<section class="sec" id="canais" aria-label="Canais de contato">
+  <div class="berco">
+    <div class="regua" aria-hidden="true"></div>
+    <div class="cabeca">
+      <h2 class="cabeca__t" data-tracar><span class="tr">Onde falar</span></h2>
+      <p class="cabeca__d"><span class="coord"><b>06</b><i>/06</i></span> &nbsp; Três canais diretos.</p>
     </div>
-
     <div class="canais">
       <a class="canal rv" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
-        <span class="mono">WhatsApp</span>
+        <span class="rot rot--brasa">WhatsApp</span>
         <span class="canal__v">(11)<br>99867-7704</span>
-        <span class="canal__d">O caminho mais rápido. <i class="canal__i">→</i></span>
+        <span class="canal__d">O caminho mais rápido. <i aria-hidden="true">&rsaquo;</i></span>
       </a>
-      <a class="canal rv" style="--d:.08s" href="tel:+5511998677704">
-        <span class="mono">Telefone</span>
+      <a class="canal rv" style="--atraso:.08s" href="tel:+5511998677704">
+        <span class="rot">Telefone</span>
         <span class="canal__v">Ligar<br>agora</span>
-        <span class="canal__d">Segunda a sábado, 9h às 20h. <i class="canal__i">→</i></span>
+        <span class="canal__d">Segunda a sábado, 9h às 20h. <i aria-hidden="true">&rsaquo;</i></span>
       </a>
-      <a class="canal rv" style="--d:.16s" href="https://instagram.com/nextstudio.site" target="_blank" rel="noopener noreferrer">
-        <span class="mono">Instagram</span>
+      <a class="canal rv" style="--atraso:.16s" href="https://instagram.com/nextstudio.site" target="_blank" rel="noopener noreferrer">
+        <span class="rot">Instagram</span>
         <span class="canal__v canal__v--peq">@nextstudio.site</span>
-        <span class="canal__d">Os projetos que estão saindo. <i class="canal__i">→</i></span>
+        <span class="canal__d">Os projetos que estão saindo. <i aria-hidden="true">&#8599;</i></span>
       </a>
-    </div>
-
-    <div class="pre__pe">
-      <p class="mono">Guarulhos · SP &nbsp;·&nbsp; Atendimento para todo o Brasil</p>
-      <a class="lk lk--laranja" href="precos.html">Ver os planos antes <i>→</i></a>
     </div>
   </div>
 </section>
 
-<!-- ═══ PRÓXIMA ABA ═══ -->
-<a class="prox" href="index.html" aria-label="Voltar para: Início">
-  <div class="wrap">
-    <div class="prox__in">
-      <span>
-        <span class="mono">Voltar para</span>
-        <span class="prox__t">Início<em>.</em></span>
-      </span>
-      <i class="prox__i" aria-hidden="true">→</i>
+<section class="sec claro" id="formulario" data-claro aria-label="Formulário de contato">
+  <div class="berco">
+    <div class="regua" aria-hidden="true"></div>
+    <div class="cabeca">
+      <h2 class="cabeca__t" data-tracar><span class="tr">Conte o projeto</span></h2>
+      <p class="cabeca__d">Preencha e o WhatsApp abre com a mensagem já escrita. Você só aperta enviar.</p>
     </div>
-  </div>
-</a>
 
-<!-- ═══ CTA FINAL ═══ -->
-<section class="fim" id="fim" data-fim aria-labelledby="fimTit" data-cap="05 / Contato" data-clima=".85">
-  <div class="fim__cam fim__cam--base">
-    <div class="wrap">
-      <div class="fim__topo">
-        <span class="mono">[ 05 ] &nbsp;Último passo</span>
-        <span class="mono">(11) 99867-7704</span>
-      </div>
-      <h2 class="fim__h linhas" id="fimTit">
-        <span class="ln"><i>Seu próximo</i></span>
-        <span class="ln"><i>site começa</i></span>
-        <span class="ln"><i>aqui<em>.</em></i></span>
-      </h2>
-      <p class="fim__p">Se você quer um site que tenha a cara do seu negócio, vamos conversar.</p>
-      <div>
-        <a class="bt bt--forte" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer"><span>Falar no WhatsApp</span><i>→</i></a>
-      </div>
-    </div>
-  </div>
+    <form class="form" id="formContato" novalidate>
+      <div class="aviso" id="formAviso" aria-live="polite"></div>
 
-  <div class="fim__cam fim__cam--on" id="fimOn" aria-hidden="true">
-    <div class="wrap">
-      <div class="fim__topo">
-        <span class="mono">[ 05 ] &nbsp;Último passo</span>
-        <span class="mono">(11) 99867-7704</span>
+      <div class="form__dupla">
+        <p class="campo">
+          <label class="campo__rot" for="f-nome">Nome <span class="campo__op">obrigatório</span></label>
+          <input id="f-nome" name="nome" type="text" maxlength="60" autocomplete="name"
+                 required placeholder="Como você se chama">
+          <span class="campo__erro" aria-live="polite"></span>
+        </p>
+        <p class="campo">
+          <label class="campo__rot" for="f-empresa">Empresa <span class="campo__op">se tiver</span></label>
+          <input id="f-empresa" name="empresa" type="text" maxlength="60" autocomplete="organization"
+                 placeholder="Nome do negócio">
+          <span class="campo__erro" aria-live="polite"></span>
+        </p>
       </div>
-      <h2 class="fim__h revelado">
-        <span class="ln"><i>Seu próximo</i></span>
-        <span class="ln"><i>site começa</i></span>
-        <span class="ln"><i>aqui.</i></span>
-      </h2>
-      <p class="fim__p">Se você quer um site que tenha a cara do seu negócio, vamos conversar.</p>
-      <div><span class="bt"><span>Falar no WhatsApp</span><i>→</i></span></div>
+
+      <div class="form__dupla">
+        <p class="campo">
+          <label class="campo__rot" for="f-telefone">Telefone <span class="campo__op">obrigatório</span></label>
+          <input id="f-telefone" name="telefone" type="tel" inputmode="tel" maxlength="16" autocomplete="tel"
+                 required placeholder="(11) 99999-9999">
+          <span class="campo__erro" aria-live="polite"></span>
+        </p>
+        <p class="campo">
+          <label class="campo__rot" for="f-email">E-mail <span class="campo__op">opcional</span></label>
+          <input id="f-email" name="email" type="email" maxlength="80" autocomplete="email"
+                 placeholder="voce@exemplo.com.br">
+          <span class="campo__erro" aria-live="polite"></span>
+        </p>
+      </div>
+
+      <p class="campo">
+        <label class="campo__rot" for="f-tipo">Tipo de projeto</label>
+        <select id="f-tipo" name="tipo">
+          <option value="Ainda não sei">Ainda não sei</option>
+          <option value="Site institucional">Site institucional</option>
+          <option value="Landing page">Landing page</option>
+          <option value="Catálogo digital">Catálogo digital</option>
+          <option value="Experiência digital">Experiência digital</option>
+          <option value="Plano Start (R$ 599)">Plano Start — R$ 599</option>
+          <option value="Plano Pro (R$ 789)">Plano Pro — R$ 789</option>
+          <option value="Plano Premium (R$ 978)">Plano Premium — R$ 978</option>
+        </select>
+        <span class="campo__erro" aria-live="polite"></span>
+      </p>
+
+      <p class="campo">
+        <label class="campo__rot" for="f-mensagem">
+          <span>Mensagem <span class="campo__op">obrigatório</span></span>
+          <span class="campo__conta" id="contaMensagem" aria-live="polite">0 / 500 caracteres</span>
+        </label>
+        <textarea id="f-mensagem" name="mensagem" maxlength="500" required
+                  data-conta="contaMensagem"
+                  placeholder="Conte o que o seu negócio faz e o que você precisa no site."></textarea>
+        <span class="campo__erro" aria-live="polite"></span>
+      </p>
+
+      <div class="form__pe">
+        <span class="bt-caixa">
+          <button class="bt bt--solido" type="submit">
+            Enviar pelo WhatsApp
+          </button>
+        </span>
+        <p class="rot">Nada é gravado neste site. A mensagem vai direto para o WhatsApp.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="seguir" aria-label="Continuar navegando">
+  <div class="berco" style="padding-block:clamp(40px,5vw,72px)">
+    <div class="regua" aria-hidden="true"></div>
+    <div class="seguir__grade">
+      <a class="seguir__cart" href="projetos">
+        <b>Ver os projetos</b>
+        <span>Três sites no ar, escritos do zero.</span>
+        <span class="lk">Ir</span>
+      </a>
+      <a class="seguir__cart" href="precos">
+        <b>Conferir os planos</b>
+        <span>Start, Pro e Premium, com valor aberto.</span>
+        <span class="lk">Ir</span>
+      </a>
+      <a class="seguir__cart" href="sobre">
+        <b>Conhecer o estúdio</b>
+        <span>Quem escreve o código que vai no seu site.</span>
+        <span class="lk">Ir</span>
+      </a>
     </div>
   </div>
 </section>
@@ -221,30 +259,54 @@
 </main>
 
 <footer class="rodape">
-  <div class="wrap">
-    <div class="rodape__topo">
-      <a class="rodape__lock" href="index.html">
-        <img src="assets/logo-tagline.png" alt="Next Studio, criação de sites, Guarulhos · SP" width="837" height="170">
-      </a>
-      <nav class="rodape__nav" aria-label="Navegação do rodapé">
-        <a href="index.html">Início</a>
-        <a href="projetos.html">Projetos</a>
-        <a href="servicos.html">Serviços</a>
-        <a href="precos.html">Preços</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="contato.html" aria-current="page">Contato</a>
-        <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">WhatsApp →</a>
+  <div class="berco">
+    <div class="regua" aria-hidden="true"></div>
+    <div class="rodape__grade">
+      <div class="rodape__assina">
+        <a class="rodape__marca" href="./" aria-label="Next Studio, início">
+          <img src="assets/img/logo-tagline.png" alt="Next Studio — criação de sites, Guarulhos · SP" width="837" height="170" loading="lazy">
+        </a>
+        <p class="rodape__frase">Sites escritos do zero, linha por linha. Estúdio em Guarulhos · SP, atendendo todo o Brasil.</p>
+        <a class="rodape__fone" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704</a>
+        <span class="rot">Ligações de segunda a sábado, 9h às 20h</span>
+      </div>
+      <nav class="rodape__col" aria-label="Páginas do site">
+        <h2>O site</h2>
+        <a href="projetos">Projetos</a>
+        <a href="servicos">Serviços</a>
+        <a href="precos">Preços</a>
+        <a href="sobre">Sobre</a>
+        <a href="contato">Contato</a>
       </nav>
+      <div class="rodape__col">
+        <h2>Contato</h2>
+        <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="tel:+5511998677704">Telefone</a>
+        <a href="https://instagram.com/nextstudio.site" target="_blank" rel="noopener noreferrer">@nextstudio.site</a>
+        <a href="contato">Formulário</a>
+      </div>
+      <div class="rodape__col">
+        <h2>Estúdio</h2>
+        <span>Guarulhos · SP</span>
+        <span>Todo o Brasil</span>
+        <a href="sobre">Quem faz</a>
+        <a href="privacidade">Privacidade</a>
+      </div>
     </div>
-    <div class="rodape__base">
-      <span class="mono">© 2026 Next Studio</span>
-      <span class="mono">Feito à mão, sem template</span>
-      <a class="mono subir" href="#topo">Voltar ao topo ↑</a>
+    <div class="rodape__fim" data-tracar aria-hidden="true">
+      <span class="rodape__gigante tr">Sites feitos à mão<span class="caret">&rsaquo;</span></span>
+    </div>
+    <div class="rodape__baixo">
+      <span class="rot">&copy; <span data-ano>2026</span> Next Studio</span>
+      <span class="rot">Feito à mão, sem template</span>
+      <a class="rot subir" href="#conteudo">Voltar ao topo <i aria-hidden="true">&#8593;</i></a>
     </div>
   </div>
 </footer>
 
-<script src="assets/site.js" defer></script>
+
+<script src="assets/js/nucleo.js" defer></script>
+<script src="assets/js/malha.js" defer></script>
 
 </body>
 </html>

@@ -2,193 +2,200 @@
 <html lang="pt-BR" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>
+/* Esta página é servida em QUALQUER endereço inexistente, inclusive aninhado
+   (/-/blog/post). Sem uma base, "assets/…" viraria "/-/blog/post/assets/…" e
+   a página abriria sem estilo. A base aponta para a raiz do site: no GitHub
+   Pages de projeto é o primeiro segmento do caminho; em outro host, "/". */
+(function(){
+  var seg = location.pathname.split("/")[1];
+  var pages = location.hostname.slice(-10) === ".github.io";
+  var raiz = pages && seg && seg.indexOf(".") < 0 ? "/" + seg + "/" : "/";
+  var b = document.createElement("base"); b.href = raiz;
+  document.head.appendChild(b);
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>Página não encontrada | Next Studio</title>
-<meta name="description" content="A página que você procurou não existe no site da Next Studio. Veja as abas disponíveis.">
+<meta name="description" content="Esta página não existe no site da Next Studio. Volte para o início, veja os projetos ou fale no WhatsApp.">
 <meta name="author" content="Next Studio">
-<meta name="theme-color" content="#16130F">
+<meta name="theme-color" content="#0B0908">
 <meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://netxstudiobr.github.io/-/404">
 
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Next Studio">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://netxstudiobr.github.io/-/404">
+<meta property="og:title" content="Página não encontrada | Next Studio">
+<meta property="og:description" content="Esta página não existe no site da Next Studio. Volte para o início, veja os projetos ou fale no WhatsApp.">
+<meta property="og:image" content="https://netxstudiobr.github.io/-/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Composição da Next Studio: o título “Sites feitos à mão” em letras claras à esquerda e um notebook exibindo a marca na tela.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Página não encontrada | Next Studio">
+<meta name="twitter:description" content="Esta página não existe no site da Next Studio. Volte para o início, veja os projetos ou fale no WhatsApp.">
+<meta name="twitter:image" content="https://netxstudiobr.github.io/-/assets/img/og.jpg">
 
-<!-- favicon: recorte do ícone oficial da marca -->
-<link rel="icon" type="image/png" href="/-/assets/favicon.png">
-<link rel="apple-touch-icon" href="/-/assets/apple-touch-icon.png">
-
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="/-/assets/logo-lockup.png">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;700;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<!-- o site inteiro usa uma folha só; cada aba é HTML puro -->
-<link rel="stylesheet" href="/-/assets/estilo.css">
-
-<script>document.documentElement.className=document.documentElement.className.replace('no-js','js');</script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/estilo.css">
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js");</script>
 
 </head>
 <body>
 
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
-
-<!-- ambiente 3D generativo (shader próprio) -->
-<canvas id="amb" aria-hidden="true"></canvas>
-<div class="vinheta" aria-hidden="true"></div>
 <div class="grao" aria-hidden="true"></div>
+<div class="fio-pg" aria-hidden="true"><i id="fioPg"></i></div>
 
-<!-- abertura -->
-<div class="carga" id="carga" aria-hidden="true">
-  <img class="carga__lock" src="/-/assets/logo-lockup.png" alt="" width="948" height="130">
-  <div class="carga__barra"><i id="cargaFio"></i></div>
-  <span class="carga__n" id="cargaN">000</span>
-</div>
-
-<!-- trilhos: a espinha que percorre a aba inteira -->
-<div class="trilho trilho--e" aria-hidden="true">
-  <span class="trilho__cap" id="capitulo"><b>00</b> / INÍCIO</span>
-  <div class="espinha">
-    <span class="espinha__fill" id="espFill"></span>
-    <img class="espinha__mark" id="espMark" src="/-/assets/logo-mark.png" alt="" width="101" height="124">
-  </div>
-</div>
-<div class="trilho trilho--d" aria-hidden="true">
-  <span class="trilho__txt">Next Studio · Guarulhos · SP</span>
-</div>
-
-<!-- navegação -->
-<header class="navbar" id="navbar">
-  <div class="navbar__in">
-    <a class="marca" href="#topo" aria-label="Next Studio, início">
-      <img src="/-/assets/logo-lockup.png" alt="Next Studio" width="948" height="130">
+<header class="topo" id="topo">
+  <div class="topo__in">
+    <a class="marca" href="./" aria-label="Next Studio, início">
+      <img src="assets/img/logo-lockup.png" alt="Next Studio" width="948" height="130">
     </a>
-    <nav class="navlinks" id="navlinks" aria-label="Navegação principal">
-      <a href="/-/projetos.html">Projetos</a>
-      <a href="/-/servicos.html">Serviços</a>
-      <a href="/-/precos.html">Preços</a>
-      <a href="/-/sobre.html">Sobre</a>
-      <a href="/-/contato.html">Contato</a>
+    <nav class="topo__nav" aria-label="Navegação principal">
+      <a href="projetos">Projetos</a>
+      <a href="servicos">Serviços</a>
+      <a href="precos">Preços</a>
+      <a href="sobre">Sobre</a>
+      <a href="contato">Contato</a>
     </nav>
-    <a class="nav__ig" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
-      <span>WhatsApp</span><span aria-hidden="true">→</span>
-    </a>
-    <button class="burg" id="burg" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
-      <i></i><i></i>
+    <span class="bt-caixa topo__zap">
+      <a class="bt bt--solido" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">
+        WhatsApp
+      </a>
+    </span>
+    <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <i aria-hidden="true"></i><i aria-hidden="true"></i>
     </button>
   </div>
 </header>
 
 <div class="menu" id="menu" hidden>
   <nav class="menu__lista" aria-label="Navegação">
-    <a href="/-/index.html" aria-current="page" style="--d:.06s">Início</a>
-    <a href="/-/projetos.html" style="--d:.12s">Projetos</a>
-    <a href="/-/servicos.html" style="--d:.18s">Serviços</a>
-    <a href="/-/precos.html" style="--d:.24s">Preços</a>
-    <a href="/-/sobre.html" style="--d:.30s">Sobre</a>
-    <a href="/-/contato.html" style="--d:.36s">Contato<em>.</em></a>
+    <a href="./" style="--atraso:.05s"><em>01</em>Início</a>
+    <a href="projetos" style="--atraso:.10s"><em>02</em>Projetos</a>
+    <a href="servicos" style="--atraso:.15s"><em>03</em>Serviços</a>
+    <a href="precos" style="--atraso:.20s"><em>04</em>Preços</a>
+    <a href="sobre" style="--atraso:.25s"><em>05</em>Sobre</a>
+    <a href="contato" style="--atraso:.30s"><em>06</em>Contato</a>
   </nav>
   <div class="menu__pe">
-    <span class="mono">Guarulhos · SP<br>Brasil</span>
-    <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704 →</a>
+    <span class="rot">Guarulhos · SP<br>Atendimento para todo o Brasil</span>
+    <a class="lk" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704</a>
   </div>
 </div>
 
 <main id="conteudo">
 
-<!-- ═══ 404 ═══ -->
-<section class="hero hero--interna" id="topo" aria-labelledby="heroTit" data-cap="·· / Perdido" data-clima=".12">
-  <div class="hero__filme" id="heroFilme" aria-hidden="true">
-    <video id="heroVideo" src="/-/assets/hero-bg.mp4" width="1280" height="720"
-           autoplay muted loop playsinline preload="metadata"
-           disablepictureinpicture disableremoteplayback tabindex="-1"></video>
-    <span class="hero__veu"></span>
-  </div>
-  <img class="hero__eco" id="heroEco" src="/-/assets/logo-outline.png" alt="" aria-hidden="true" width="130" height="157">
-  <div class="wrap">
-    <div class="hero__topo hero__topo--entre">
-      <span class="mono">[ 404 ] &nbsp;Página não encontrada</span>
-      <span class="mono hero__onde">Next Studio &nbsp;·&nbsp; <b>Erro 404</b></span>
-    </div>
-
-    <h1 class="hero__h1" id="heroTit">
-      <span class="ln"><i>Essa aba</i></span>
-      <span class="ln"><i>não existe<em>.</em></i></span>
-    </h1>
-
-    <div class="hero__base">
-      <p class="hero__p rv" style="--d:.5s">
-        O endereço que você abriu não está aqui. <b>As abas do site são estas</b>.
-      </p>
-      <div class="hero__ctas rv" style="--d:.62s">
-        <a class="bt bt--forte" href="/-/index.html"><span>Ir para o início</span><i>→</i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ ÍNDICE DAS ABAS ═══ -->
-<section class="sec" id="abas" aria-labelledby="abasTit" data-cap="·· / Abas" data-clima=".18">
-  <div class="wrap">
-    <div class="cab">
-      <h2 class="cab__tit linhas" id="abasTit"><span class="ln"><i>O site<em>.</em></i></span></h2>
-      <span class="mono">[ · ] &nbsp;Cinco abas</span>
-    </div>
-
-    <nav class="indice" aria-label="Abas do site">
-      <a class="indice__l" href="/-/projetos.html">
-        <span class="indice__n">[ 01 ]</span>
-        <span class="indice__t"><span class="indice__nome">Projetos</span><span class="indice__d">Três sites no ar: clínica de estética, tecnologia e adega.</span></span>
-        <i class="indice__i" aria-hidden="true">→</i>
-      </a>
-      <a class="indice__l" href="/-/servicos.html">
-        <span class="indice__n">[ 02 ]</span>
-        <span class="indice__t"><span class="indice__nome">Serviços</span><span class="indice__d">Quatro frentes de trabalho e como o projeto anda, do começo ao ar.</span></span>
-        <i class="indice__i" aria-hidden="true">→</i>
-      </a>
-      <a class="indice__l" href="/-/precos.html">
-        <span class="indice__n">[ 03 ]</span>
-        <span class="indice__t"><span class="indice__nome">Preços</span><span class="indice__d">Três planos, com valor aberto, e as dúvidas que sempre aparecem.</span></span>
-        <i class="indice__i" aria-hidden="true">→</i>
-      </a>
-      <a class="indice__l" href="/-/sobre.html">
-        <span class="indice__n">[ 04 ]</span>
-        <span class="indice__t"><span class="indice__nome">Sobre</span><span class="indice__d">Quem escreve o código que vai no seu site.</span></span>
-        <i class="indice__i" aria-hidden="true">→</i>
-      </a>
-      <a class="indice__l" href="/-/contato.html">
-        <span class="indice__n">[ 05 ]</span>
-        <span class="indice__t"><span class="indice__nome">Contato<em>.</em></span><span class="indice__d">WhatsApp, telefone e Instagram. Resposta no mesmo dia.</span></span>
-        <i class="indice__i" aria-hidden="true">→</i>
-      </a>
+<section class="erro">
+  <canvas class="erro__tela" data-malha="erro" aria-hidden="true"></canvas>
+  <div class="berco erro__in">
+    <nav class="migalhas rot" aria-label="Você está aqui" style="margin-bottom:clamp(16px,2vw,26px)">
+      <ol>
+        <li><a href="./">Início</a></li>
+        <li><span aria-current="page">Página não encontrada</span></li>
+      </ol>
     </nav>
+
+    <p class="erro__n" id="erro404" aria-hidden="true"><span>4</span><span>0</span><span>4</span></p>
+
+    <h1 class="erro__h">
+      <span class="tr">Esta página</span>
+      <span class="tr">não foi feita<span class="caret" aria-hidden="true">&rsaquo;</span></span>
+    </h1>
+    <p class="erro__p rv">
+      O endereço que você abriu não existe aqui. Pode ter sido um link antigo,
+      um erro de digitação ou uma página que saiu do ar. Os caminhos abaixo funcionam.
+    </p>
+
+    <div class="erro__acoes rv" style="--atraso:.1s">
+      <span class="bt-caixa">
+        <a class="bt bt--solido" href="./">
+          Voltar ao início
+        </a>
+      </span>
+      <span class="bt-caixa">
+        <a class="bt" href="projetos">
+          Ver os projetos
+        </a>
+      </span>
+      <span class="bt-caixa">
+        <a class="bt" href="contato">
+          Falar com o estúdio
+        </a>
+      </span>
+    </div>
   </div>
 </section>
+
+
 
 </main>
 
 <footer class="rodape">
-  <div class="wrap">
-    <div class="rodape__topo">
-      <a class="rodape__lock" href="/-/index.html">
-        <img src="/-/assets/logo-tagline.png" alt="Next Studio, criação de sites, Guarulhos · SP" width="837" height="170">
-      </a>
-      <nav class="rodape__nav" aria-label="Navegação do rodapé">
-        <a href="/-/index.html" aria-current="page">Início</a>
-        <a href="/-/projetos.html">Projetos</a>
-        <a href="/-/servicos.html">Serviços</a>
-        <a href="/-/precos.html">Preços</a>
-        <a href="/-/sobre.html">Sobre</a>
-        <a href="/-/contato.html">Contato</a>
-        <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">WhatsApp →</a>
+  <div class="berco">
+    <div class="regua" aria-hidden="true"></div>
+    <div class="rodape__grade">
+      <div class="rodape__assina">
+        <a class="rodape__marca" href="./" aria-label="Next Studio, início">
+          <img src="assets/img/logo-tagline.png" alt="Next Studio — criação de sites, Guarulhos · SP" width="837" height="170" loading="lazy">
+        </a>
+        <p class="rodape__frase">Sites escritos do zero, linha por linha. Estúdio em Guarulhos · SP, atendendo todo o Brasil.</p>
+        <a class="rodape__fone" href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">(11) 99867-7704</a>
+        <span class="rot">Ligações de segunda a sábado, 9h às 20h</span>
+      </div>
+      <nav class="rodape__col" aria-label="Páginas do site">
+        <h2>O site</h2>
+        <a href="projetos">Projetos</a>
+        <a href="servicos">Serviços</a>
+        <a href="precos">Preços</a>
+        <a href="sobre">Sobre</a>
+        <a href="contato">Contato</a>
       </nav>
+      <div class="rodape__col">
+        <h2>Contato</h2>
+        <a href="https://wa.me/5511998677704?text=Oi%21%20Vim%20pelo%20site%20da%20Next%20Studio.%20Quero%20fazer%20um%20site." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="tel:+5511998677704">Telefone</a>
+        <a href="https://instagram.com/nextstudio.site" target="_blank" rel="noopener noreferrer">@nextstudio.site</a>
+        <a href="contato">Formulário</a>
+      </div>
+      <div class="rodape__col">
+        <h2>Estúdio</h2>
+        <span>Guarulhos · SP</span>
+        <span>Todo o Brasil</span>
+        <a href="sobre">Quem faz</a>
+        <a href="privacidade">Privacidade</a>
+      </div>
     </div>
-    <div class="rodape__base">
-      <span class="mono">© 2026 Next Studio</span>
-      <span class="mono">Feito à mão, sem template</span>
-      <a class="mono subir" href="#topo">Voltar ao topo ↑</a>
+    <div class="rodape__fim" data-tracar aria-hidden="true">
+      <span class="rodape__gigante tr">Sites feitos à mão<span class="caret">&rsaquo;</span></span>
+    </div>
+    <div class="rodape__baixo">
+      <span class="rot">&copy; <span data-ano>2026</span> Next Studio</span>
+      <span class="rot">Feito à mão, sem template</span>
+      <a class="rot subir" href="#conteudo">Voltar ao topo <i aria-hidden="true">&#8593;</i></a>
     </div>
   </div>
 </footer>
 
-<script src="/-/assets/site.js" defer></script>
 
+<script src="assets/js/nucleo.js" defer></script>
+<script src="assets/js/malha.js" defer></script>
+
+<script>
+/* com a <base> apontando para a raiz, "#conteudo" levaria para a home:
+   as âncoras passam a carregar o próprio caminho da página */
+[].forEach.call(document.querySelectorAll('a[href^="#"]'), function(a){
+  a.setAttribute("href", location.pathname + location.search + a.getAttribute("href"));
+});
+</script>
 </body>
 </html>

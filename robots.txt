@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# página de uso interno, sem valor de busca (ela também tem noindex)
+Disallow: /-/obrigado
+
 Sitemap: https://netxstudiobr.github.io/-/sitemap.xml
