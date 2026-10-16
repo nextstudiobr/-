@@ -13,13 +13,13 @@
    trilho lateral com capítulo girado, sem rótulo entre colchetes, sem bloco
    de "próxima aba", sem número fantasma vazado, sem letreiro correndo.
 
-   Ordem: 1 sistema · 2 base · 3 peças · 4 abertura · 5 capa · 6 seções
+   Ordem: 1 sistema · 2 base · 3 peças · 4 whatsapp · 5 capa · 6 seções
           7 topo e rodapé · 8 internas · 9 formulário · 10 respostas
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ═══ 1. SISTEMA ═════════════════════════════════════════════════════════ */
 :root{
-  /* — tinta — a escala escura nasce do vídeo de abertura (medido: #0e0b0a) */
+  /* — tinta — */
   --tinta:#0B0908;
   --grafite:#16130F;
   --carvao:#221D18;
@@ -84,9 +84,9 @@
   --z-corpo:2;
   --z-regua:50;
   --z-menu:70;
+  --z-zap:65;        /* abaixo do menu: ele ocupa a tela toda */
   --z-topo:80;
   --z-fio:85;       /* o fio de progresso fica ACIMA do topo, senão some atrás dele */
-  --z-abertura:100;
 
   --topo-h:76px;
   --raio:2px;
@@ -132,7 +132,6 @@ body{
   -moz-osx-font-smoothing:grayscale;
   text-rendering:optimizeLegibility;
 }
-body.travado{ overflow:hidden; height:100dvh; }
 
 img,video,svg,canvas{ display:block; max-width:100%; }
 img,video{ height:auto; }
@@ -349,92 +348,38 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   transform:scaleX(var(--rolo,0)); transform-origin:left;
 }
 
-/* ═══ 4. ABERTURA — o vídeo 1, inteiro ═══════════════════════════════════
-   O vídeo é mostrado por completo, sem recorte: `contain` garante que
-   nenhuma borda seja cortada em nenhuma proporção de tela.
-   A medição de carregamento vive num fio no rodapé, fora do caminho. */
-.abertura{ display:none; }
-.abertura[hidden]{ display:none; }
-
-.js .abertura{
-  position:fixed; inset:0; z-index:var(--z-abertura);
-  background:#000;
-  container-type:size;
-  display:block;
-  overflow:hidden;
-  animation:aberturaDesiste 0s linear 14s forwards;
+/* ═══ 4. WHATSAPP FIXO ══════════════════════════════════════════════════
+   O atalho acompanha o site inteiro, sempre no mesmo canto. Ele se recolhe
+   quando o rodapé ou o fecho aparecem — ali os mesmos contatos já estão na
+   página, em tamanho grande — e some com o menu do celular aberto, que
+   ocupa a tela toda. */
+.zap-flutua{
+  position:fixed; z-index:var(--z-zap);
+  right:clamp(14px,2.2vw,30px);
+  bottom:max(clamp(14px,2.2vw,30px), env(safe-area-inset-bottom));
+  display:inline-flex; align-items:center; gap:10px;
+  padding:15px 20px;
+  background:var(--laranja); color:#190A02;
+  border-radius:var(--raio);
+  font-family:var(--rotulo); font-weight:var(--peso-rotulo);
+  font-size:var(--t-bt); letter-spacing:.07em; line-height:1; text-transform:uppercase;
+  box-shadow:0 12px 34px rgba(11,9,8,.45);
+  transition:background-color var(--t-rap) var(--e-out),
+             opacity .4s var(--e-out), transform .4s var(--e-out);
 }
-.js .abertura[hidden]{ display:none; }
-@keyframes aberturaDesiste{
-  to{ visibility:hidden; opacity:0; pointer-events:none; }
+.zap-flutua svg{ width:21px; height:21px; display:block; fill:currentColor; }
+@media (hover:hover){ .zap-flutua:hover{ background:var(--brasa); } }
+/* recolhido: sem clique e fora do caminho, mas ainda no DOM */
+.zap-flutua--oculto{ opacity:0; transform:translateY(14px) scale(.96); pointer-events:none; }
+.menu-on .zap-flutua{ opacity:0; transform:translateY(14px); pointer-events:none; }
+/* no celular fica só o ícone; o rótulo continua lá para o leitor de tela */
+@media (max-width:599px){
+  .zap-flutua{ padding:15px; }
+  .zap-flutua span{
+    position:absolute; width:1px; height:1px; margin:-1px;
+    overflow:hidden; clip-path:inset(50%); white-space:nowrap;
+  }
 }
-
-/* O quadro tem a medida exata do vídeo (16:9), centrado — então as bordas
-   dele são as bordas da imagem, não da tela. O vídeo tem a borda esquerda
-   cinza e a direita preta; num fundo de outra cor isso aparecia como duas
-   faixas nas laterais. Agora o fundo é preto e as bordas se dissolvem nele:
-   nada do vídeo é cortado, só não sobra emenda. */
-.abertura__filme{
-  position:absolute; inset:0; margin:auto;
-  width:100%; height:100%;
-  width:min(100cqw, 100cqh * 16 / 9);
-  height:min(100cqh, 100cqw * 9 / 16);
-  object-fit:contain;          /* o vídeo inteiro, nunca cortado */
-  object-position:center;
-  -webkit-mask-image:
-    linear-gradient(to right, transparent, #000 8%, #000 92%, transparent),
-    linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
-  -webkit-mask-composite:source-in;
-          mask-image:
-    linear-gradient(to right, transparent, #000 8%, #000 92%, transparent),
-    linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
-          mask-composite:intersect;
-}
-
-/* a medição: um fio rente ao rodapé e um número pequeno ao lado dele */
-.abertura__medida{
-  position:absolute; left:0; right:0; bottom:0;
-  display:flex; align-items:center; gap:clamp(12px,2vw,22px);
-  padding:0 var(--gut) clamp(16px,2.4vw,26px);
-}
-.abertura__fio{
-  position:relative; flex:1; height:1px;
-  background:var(--fio-2);
-}
-.abertura__fio > i{
-  position:absolute; inset:0 auto 0 0;
-  width:calc(var(--p,0) * 100%);
-  background:var(--laranja);
-}
-.abertura__n{
-  font-family:var(--rotulo); font-size:var(--t-rot); font-weight:var(--peso-rotulo);
-  letter-spacing:.1em; color:var(--areia);
-  font-variant-numeric:tabular-nums;
-  flex:none; min-width:4ch; text-align:right;
-}
-.abertura__n b{ font-weight:var(--peso-rotulo); color:var(--laranja); }
-.abertura__marca{
-  position:absolute; top:clamp(16px,2.4vw,28px); left:var(--gut);
-  height:clamp(14px,1.4vw,19px); width:auto; opacity:.9;
-}
-
-/* ── a passagem ───────────────────────────────────────────────────────────
-   O vídeo apaga, o fundo fica transparente e a capa aparece por baixo — mas o
-   fio de medição NÃO some: ele sobe até a linha da leitura da capa e se
-   recolhe ali. O deslocamento exato é medido pelo JS. */
-.js .abertura{ transition:background-color .8s var(--e-io); }
-.abertura__filme{ transition:opacity .55s var(--e-io), transform .9s var(--e-exp); }
-.abertura__marca{ transition:opacity .4s var(--e-io); }
-.abertura__medida{ transition:transform 1.05s var(--e-exp); will-change:transform; }
-.abertura__n{ transition:opacity .3s var(--e-io); }
-
-/* especificidade igual à de `.js .abertura`, senão o fundo escuro vence */
-.js .abertura.abertura--saindo{ background-color:transparent; pointer-events:none; }
-.abertura--saindo .abertura__filme{ opacity:0; transform:scale(.97); }
-.abertura--saindo .abertura__marca{ opacity:0; }
-.abertura--saindo .abertura__n{ opacity:0; transition-delay:.5s; }
-/* sem passagem medida (tela rolada, alvo fora de vista): só apaga */
-.abertura--saindo:not(.abertura--passa) .abertura__medida{ opacity:0; transition:opacity .4s; }
 
 /* ═══ 5. CAPA — a foto ═══════════════════════════════════════════════════
    Só a foto do notebook, parada e nítida desde o primeiro quadro. Nada de
@@ -500,27 +445,12 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .capa__p b{ font-weight:600; color:var(--areia); }
 .capa__acoes{ display:flex; flex-wrap:wrap; gap:12px; }
 
-/* a leitura: a linha que recebe o fio da abertura */
+/* a leitura: a linha de legenda no pé da capa */
 .capa__leitura{
   display:flex; flex-wrap:wrap; align-items:center;
   justify-content:space-between; gap:10px 20px;
   padding-top:clamp(14px,2vw,22px);
   border-top:1px solid var(--fio);
-}
-.capa__leitura{ position:relative; }
-.capa__leitura::before{
-  content:""; position:absolute; left:0; right:0; top:-1px; height:1px;
-  background:var(--laranja);
-  transform:scaleX(0); transform-origin:right;
-  pointer-events:none;
-}
-/* invisível enquanto o fio da abertura viaja; aparece no ponto exato em que
-   ele chega e então se recolhe para a direita, para dentro do número */
-.capa.recebeu .capa__leitura::before{ animation:recolhe 2.3s var(--e-io) both; }
-@keyframes recolhe{
-  0%,52%{ transform:scaleX(1); opacity:0; }
-  53%   { transform:scaleX(1); opacity:1; }
-  100%  { transform:scaleX(0); opacity:1; }
 }
 @media (max-width:599px){ .so-largo{ display:none; } }
 .capa__rodape{
@@ -1537,7 +1467,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
 /* — impressão — */
 @media print{
-  .abertura,.topo,.menu,.grao,.fio-pg,
+  .topo,.menu,.grao,.fio-pg,.zap-flutua,
   .capa__foto,.manifesto__tela,.fecho__fundo,.seguir{ display:none!important; }
   body{ background:#fff; color:#000; }
   .sec,.fecho,.manifesto,.obra,.frentes,.rito,.tabela,.capa{ background:#fff!important; color:#000!important; }

@@ -9,6 +9,7 @@
 
    Ordem: 0 base · 1 relógio · 2 revelar · 3 capa · 6 topo e menu
           7 fio de progresso · 7b roteiro · 7c janelas · 7d régua · 7e fecho
+          7f whatsapp fixo
           8 processo · 9 acordeão · 11 formulário · 12 saída · 13 miudezas
    ══════════════════════════════════════════════════════════════════════════ */
 (function(){
@@ -131,8 +132,7 @@ function acorda(raizEl){
 
 /* ═══ 3. A CAPA ═════════════════════════════════════════════════════════
    A capa é só a foto, parada e nítida. Aqui ela ganha a classe que solta o
-   traçado do título, e o texto e os botões dela aparecem juntos. Pode ser
-   chamada pela abertura ou pelo arranque, o que vier primeiro. */
+   traçado do título, e o texto e os botões dela aparecem juntos. */
 function comecaCapa(){
   var c = $("#capa");
   if (!c) return;
@@ -384,6 +384,26 @@ function fechoVideo(){
   }).observe(v);
 
   document.addEventListener("visibilitychange", ajusta);
+}
+
+/* ═══ 7f. WHATSAPP FIXO ══════════════════════════════════════════════════
+   O atalho acompanha o site inteiro e só se recolhe em três lugares: a capa,
+   o fecho e o rodapé. Nos três o contato já está na página em tamanho
+   grande, e é ali que o flutuante cobriria texto — a legenda no pé da capa,
+   os botões do fecho, o "voltar ao topo" do rodapé. */
+function zapFlutua(){
+  var el = $(".zap-flutua");
+  if (!el || !("IntersectionObserver" in window)) return;
+
+  var alvos = $$(".capa, .fecho, .rodape");
+  if (!alvos.length) return;
+
+  var obs = new IntersectionObserver(function(ent){
+    for (var i=0;i<ent.length;i++) ent[i].target.dataset.aVista = ent[i].isIntersecting ? "1" : "";
+    var algum = alvos.some(function(a){ return a.dataset.aVista === "1"; });
+    el.classList.toggle("zap-flutua--oculto", algum);
+  }, { threshold:0.01 });
+  alvos.forEach(function(a){ obs.observe(a); });
 }
 
 /* ═══ 8. PROCESSO ════════════════════════════════════════════════════════ */
@@ -660,24 +680,16 @@ function liga(){
   linksNoDisco(); enderecoLimpo();
   acorda();
   topo(); menu(); fioPagina(); processo();
-  roteiros(); janelas(); reguas(); fechoVideo();
+  roteiros(); janelas(); reguas(); fechoVideo(); zapFlutua();
   acordeao(); formulario();
   selo(); saida(); ano();
   console_();
 
-  // sem abertura, ou com ela já encerrada antes de o núcleo carregar, a capa
-  // começa agora. O núcleo é "defer": numa volta à página a abertura pode
-  // acabar antes dele, e o aviso ns:capa se perderia — mas ela deixa a
-  // classe "entrou" na raiz.
-  var ab = $("#abertura");
-  if (!ab || ab.hidden || raiz.classList.contains("entrou")) comecaCapa();
+  comecaCapa();
 }
 
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", liga);
 else liga();
-
-/* a abertura avisa quando o palco passa a ser da capa */
-document.addEventListener("ns:capa", comecaCapa);
 
 window.NS = { inscreve:inscreve, aoMedir:aoMedir, acorda:acorda, REDUZ:REDUZ, zap:zap };
 
